@@ -1,0 +1,20 @@
+<div class="ht-80  d-flex align-items-center justify-content-center mg-t-20">
+  <ul class="pagination pagination-circle mg-b-0">
+    <li class="page-item hidden-xs-down">
+      <a class="page-link" href="#" aria-label="First"><i class="fa fa-angle-double-left"></i></a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous"><i class="fa fa-angle-left"></i></a>
+    </li>
+    <li *ngFor="let pageNum of getPages()" class="page-item " [ngClass]="{'active':this.currentPage===pageNum}">
+      <a class="page-link" href="javascript:void(0)" (click)="onPage(pageNum)" >{{pageNum}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a>
+    </li>
+    <li class="page-item hidden-xs-down">
+      <a class="page-link" href="#" aria-label="Last"><i class="fa fa-angle-double-right"></i></a>
+    </li>
+  </ul>
+</div>
+

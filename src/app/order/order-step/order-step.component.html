@@ -1,0 +1,116 @@
+<mat-horizontal-stepper #stepper linear class="stepper-container">
+<!-- #docregion editable -->
+  <mat-step [stepControl]="firstFormGroup" [completed]="isCompleted">
+<!-- #enddocregion editable -->
+    <form [formGroup]="firstFormGroup">
+<!-- #docregion step-label -->
+      <ng-template matStepLabel>Đăng nhập</ng-template>
+<!-- #enddocregion step-label -->
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" >
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" [completed]="isCompleted">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Địa chỉ giao hàng</ng-template>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               >
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form [formGroup]="thirdFormGroup">
+    <ng-template matStepLabel>Thanh toán & Đặt mua</ng-template>
+    <div class="row">
+      <div class="col-md-8">
+        <p><strong>1. Chọn hình thức giao hàng</strong></p>
+        <div class="delivery-form">
+          <label class="rdiobox">
+            <input name="deliveryType" type="radio" value="0" formControlName="deliveryType">
+            <span>Giao hàng tiết kiệm</span>
+          </label>
+          <label class="rdiobox">
+            <input name="deliveryType" type="radio" value="1" formControlName="deliveryType">
+            <span>Gao hàng siêu tốc (2h)</span>
+          </label>
+        </div>
+
+        <p><strong>2. Chọn hình thức thanh toán</strong></p>
+        <div class="payment-form">
+          <label class="rdiobox">
+            <input name="paymentType" type="radio" value="0" formControlName="paymentType">
+            <span>Thanh toán bằng tiền mặt khi nhận hàng</span>
+          </label>
+          <label class="rdiobox">
+            <input name="paymentType" type="radio" value="1" formControlName="paymentType">
+            <span>Thanh toán bằng thẻ ATM</span>
+          </label>
+        </div>
+
+        <button class="btn-buy" (click)="getBuy()">Đặt mua</button>
+        <p class="recheck-text">(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+      </div>
+      <div class="col-md-4" style="margin-top: 40px;">
+        <div class="customer-info">
+          <div class="row">
+            <div class="col-md-12">
+              <span>Địa chỉ giao hàng</span>
+              <button style="float:right" class="btn-edit-address">Sửa</button>
+            </div>
+          </div>
+          <hr>
+          <p><strong>{{customerInfo.fullName}}</strong></p>
+          <p class="customer-address">{{customerInfo.address}}</p>
+          <p>Điện thoại: {{customerInfo.phone}}</p>
+        </div>
+        <div class="order-info">
+          <p><strong>Đơn hàng</strong></p>
+          <div>
+            <span>{{(lstResult && lstResult.length > 0 ? lstResult.length : '0') + ' sản phẩm'}} </span>
+            <span class="info-toggle" (click)="isToggle = !isToggle" data-toggle="collapse" data-target="#info-review">{{ isToggle ? 'Thu gọn' : 'Xem thông tin' }}
+
+            </span>
+
+            <button style="float:right" class="btn-edit-order" [routerLink]="['/cart']">Sửa</button>
+          </div>
+          <div id="info-review" class="collapse info-review-container">
+            <div class="info-review" *ngFor="let item of lstResult">
+              <span class="product-number">{{ item.quantity }} x </span><span class="product-name">{{ item.productName }}</span>
+              <span style="float:right">{{ item.totalPrice | currency:"VND" }}</span>
+            </div>
+          </div>
+
+          <hr>
+          <div>
+            <span>Tạm tính</span>
+            <span style="float:right">{{ temporaryBill | currency:"VND"}}</span>
+          </div>
+          <div>
+            <span>Phí vận chuyển</span>
+            <span style="float:right">{{ deliveryFee | currency:"VND"}}</span>
+          </div>
+          <hr>
+          <div class="total-money-container">
+            <span><strong>Thành tiền:</strong></span>
+            <div class="total-money">
+              <span class="money">{{ getTotalBill() | currency:"VND"}}</span><br>
+              <span class="note">(Đã bao gồm VAT nếu có)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </mat-step>
+</mat-horizontal-stepper>

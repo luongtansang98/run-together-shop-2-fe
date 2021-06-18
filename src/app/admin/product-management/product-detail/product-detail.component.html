@@ -1,0 +1,106 @@
+<div class="modal fade" id="productDetailModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm mới sản phẩm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div style="width: 50%;float: left;padding-right: 10px;">
+            <div class="form-group row">
+              <label>Danh sách hình ảnh</label>
+            </div>
+            <div class="form-group row">
+              <img [src]="imageUrl" (click)="file.click()" class="col-12" style="height:240px">
+              <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,1)"
+              style="display:none;">
+            </div>
+            <div class="form-group row">
+
+              <img [src]="imageUrl2" (click)="file2.click()" class="col-4" style="width: 80px; height:80px">
+
+
+              <input type="file" #file2 placeholder="Choose file" (change)="uploadFile(file2.files,2)"
+                style="display:none;">
+                <img [src]="imageUrl3" (click)="file3.click()" class="col-4" style="width: 80px; height:80px">
+              <img [src]="imageUrl4" (click)="file4.click()" class="col-4" style="width: 80px; height:80px">
+              <input type="file" #file3 placeholder="Choose file" (change)="uploadFile(file3.files,3)"
+                style="display:none;">
+              <input type="file" #file4 placeholder="Choose file" (change)="uploadFile(file4.files,4)"
+                style="display:none;">
+
+            </div>
+
+          </div>
+          <div style="width: 50%;float:right;padding-left: 10px;border-left: 1px solid #cfd6de;">
+            <form [formGroup]="formDetail" enctype="multipart/form-data" (ngSubmit)="onCreate()">
+              <div class="form-group row">
+                <label class="col-3">Mã sản phẩm</label>
+                <input type="text" class="form-control col-9" formControlName="code">
+              </div>
+              <div class="form-group row">
+                <label class="col-3">Tên sản phẩm</label>
+                <input type="text" class="form-control col-9" formControlName="name">
+              </div>
+              <div class="form-group  row">
+                <label class="col-3">Mô tả</label>
+                <textarea class="form-control col-9" formControlName="description"></textarea>
+              </div>
+              <div class="form-group  row">
+                <label class="col-3">Nhóm sản phẩm</label>
+                <div class="col-9">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="productGroupId" value="1"
+                    [checked]="this.formDetail.value.productGroupId === 1" formControlName="productGroupId">
+                    <label class="form-check-label" for="inlineRadio1">Nam</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="productGroupId" value="2"
+                    [checked]="this.formDetail.value.productGroupId === 2" formControlName="productGroupId">
+                    <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="productGroupId" value="3"
+                    [checked]="this.formDetail.value.productGroupId === 3" formControlName="productGroupId">
+                    <label class="form-check-label" for="inlineRadio2">Trẻ em</label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group  row" style="padding-left: 15px;">
+                <select class="form-control col-6" formControlName="categoryId">
+                  <option value="0">-Danh mục-</option>
+                  <option value="1">Thể thao</option>
+                  <option value="2">Gym</option>
+                  <option value="3">Chạy bộ</option>
+                </select>
+                <select class="form-control col-6" formControlName="colorId">
+                  <option value="0">-Màu sắc-</option>
+                  <option value="1">Cam</option>
+                  <option value="2">Đỏ</option>
+                  <option value="3">Trắng</option>
+                </select>
+              </div>
+              <div class="form-group row">
+                <label class="col-3">Giá nhập</label>
+                <input type="text" class="form-control col-9" formControlName="priceImport" appVndOnly>
+              </div>
+              <div class="form-group row">
+                <label class="col-3">Giá xuất</label>
+                <input type="text" class="form-control  col-9" formControlName="priceExport" appVndOnly>
+              </div>
+
+
+            </form>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="onCreate()">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>

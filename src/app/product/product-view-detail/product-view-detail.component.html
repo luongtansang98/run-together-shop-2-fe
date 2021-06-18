@@ -1,0 +1,209 @@
+    <div class="br-section-wrapper mt-80p">
+      <div class="row">
+        <div class="inner-mine col-md-7 text-center">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </div>
+        <div class="inner-mine col-md-5">
+          <div class="col-md-12 d-flex align-items-start flex-column pd-25-force">
+            <div>
+              <span class="tx-18 valign-top">
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+              </span>
+              <span class="tx-12"> &nbsp; <span class="tx-rubik">4 </span> Stars</span>
+            </div>
+            <h5 class="tx-normal mg-y-5"><a href="" class="tx-30">{{product.name}}</a></h5>
+            <p class="mg-y-20 tx-20 lh-7 mg-b-30 mg-md-b-auto">{{product.description}}</p>
+
+            <div class="mg-t-25">
+              <h5 class="tx-inverse tx-normal mg-b-5"> <span
+                  class="tx-danger tx-medium tx-lato tx-30">{{product.priceExport | currency:"VND":true}}</span></h5>
+            </div>
+            <div class="buy-number">
+              <label class="tx-20">Số lượng </label>
+              <button type="button" class="btn btn-light  rounded-circle" (click)="getTotal(true,false)"><i
+                  class="fa fa-plus"></i></button>
+              <input class="form-control" type="number"
+                [(ngModel)]="this.totalObj">
+              <button type="button" class="btn btn-light  rounded-circle" (click)="getTotal(false,true)"><i
+                  class="fa fa-minus"></i></button>
+            </div>
+            <div class="buy-size">
+              <label class="tx-20" >Kích thước</label>
+              <div class="size-list">
+                <button [disabled]="size.disabled" *ngFor="let size of product?.sizes; i as index" class="btn btn-light   rounded-circle">{{size?.sizeNumber}}</button>
+              </div>
+            </div>
+            <div class="buy-decide">
+                <button (click)="addToCart(true)" class="btn btn-primary  mg-b-10 " style="margin-right: 15px;">
+                  Mua ngay!
+                </button>
+                <button (click)="addToCart(false)"  class="btn btn-info  mg-b-10 ">Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pl-55p">
+      <span class="comment-title">{{'Đánh giá và nhận xét của khách hàng' | uppercase}} {{product.name | uppercase}}</span>
+    </div>
+    <div class="br-section-wrapper">
+      <div class="row line">
+        <div class="col-md-4">
+          <div class="rating-star-general row">
+            <div class="comment-score col-md-3">4.7</div>
+            <div class="col-md-9 score-star">
+              <span class="tx-18 valign-top">
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+                <i class="fa fa-star  tx-warning"></i>
+              </span>
+              <br>
+              <span class="total-comment">183 Nhận xét</span>
+            </div>
+          </div>
+          <div class="rating-star">
+            <span class="tx-18 valign-top star">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+            </span>
+            <div class="process-star">
+              <div class="progress ht-2 mg-b-10 ">
+                <div class="progress-bar wd-80p" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="comment-of-star">
+              140
+            </div>
+          </div>
+
+          <div class="rating-star">
+            <span class="tx-18 valign-top star">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <div class="process-star">
+              <div class="progress ht-2 mg-b-10 ">
+                <div class="progress-bar wd-65p" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="comment-of-star">
+              40
+            </div>
+          </div>
+
+          <div class="rating-star">
+            <span class="tx-18 valign-top star">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <div class="process-star">
+              <div class="progress ht-2 mg-b-10 ">
+                <div class="progress-bar wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="comment-of-star">
+              35
+            </div>
+          </div>
+
+          <div class="rating-star">
+            <span class="tx-18 valign-top star">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <div class="process-star">
+              <div class="progress ht-2 mg-b-10 ">
+                <div class="progress-bar wd-25p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="comment-of-star">
+              10
+            </div>
+          </div>
+
+          <div class="rating-star">
+            <span class="tx-18 valign-top star">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <div class="process-star">
+              <div class="progress ht-2 mg-b-10 ">
+                <div class="progress-bar wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="comment-of-star">
+              1
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-8">
+          <p class="all-img">Tất cả hình ảnh (35)</p>
+          <div class="rating-img">
+            <img  class="" src="/assets/img/force1.jpg" alt="First slide">
+            <img  class="" src="/assets/img/force1.jpg" alt="First slide">
+            <img  class="" src="/assets/img/force1.jpg" alt="First slide">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 user-container-col-1">
+            <div class="user-img">
+              <img src="https://via.placeholder.com/500" class="rounded-circle" alt="Image">
+            </div>
+            <div class="user">
+              <a href="" class="tx-inverse tx-14 tx-medium">Mark K. Peters</a>
+              <br>
+              <span class="tx-11">Đã tham gia 2 năm</span>
+            </div>
+        </div>
+        <div class="col-md-8 user-container-col-2">
+          <div class="rating-star">
+            <span class="tx-18 valign-top star">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+            </span>
+            <div class="satisfy-rating">
+              <span>Cực kì hài lòng</span>
+            </div>
+          </div>
+          <div class="comment">
+            <span>sản phẩm đúng hình ảnh, nhưng hộp khi giao bị rách góc , có cả gói hút ẩm khá ok, lần sau nên kêu shipper đừng trọc thủng hộp, muốn tặng ai đôi giày thì hộp lại méo với rách sao giám tặng được, nói chung giày vừa chân , đẹp, ok , cho luôn 5 sao</span>
+          </div>
+          <div class="comment-img">
+            <img  class="" src="/assets/img/force1.jpg" alt="First slide">
+            <img  class="" src="/assets/img/force1.jpg" alt="First slide">
+            <img  class="" src="/assets/img/force1.jpg" alt="First slide">
+          </div>
+          <div class="comment-date">
+            <span>Nhận xét vào 20/02/2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+

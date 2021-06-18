@@ -1,0 +1,109 @@
+<div style="margin-top: 70px;">
+  <h5>Giỏ hàng ({{this.totalObj}})</h5>
+</div>
+<div>
+  <div class="br-section-wrapper" style="margin-top: 10px;padding-top: 50px;margin-bottom: 20px;margin-right: 19px;width: 1000px;float: left;">
+    <table class="table table-hover">
+      <tbody >
+        <tr *ngFor="let cart of this.lstResult; index as i" style="height: 160px;">
+          <td style="width: 160px;height: 145px;">
+            <img class="d-block w-100"  [src]="createImgPath(cart.imagePath)" alt="First slide">
+          </td>
+          <td style="width: 500px;padding-left: 15px;">
+            <div style="height: 80px;font-size: 17px;padding-top: 3px;">
+              {{cart.productName}}
+            </div>
+            <div>
+              <a class="btn btn-danger" (click)="deleteItem(i)" href="javascript:void(0)">Xóa</a>
+            </div>
+          </td>
+          <td style="width:140px;">
+            <div style="height: 100px;font-size: 20px;font-size: 20px;padding-left: 10px;">
+              <strong>{{cart.totalPrice| currency:"VND"}}</strong>
+            </div>
+            <div>
+            </div>
+          </td>
+          <td style="width: 120px;">
+
+            <div style="height: 100px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light  rounded-circle" (click)="getTotal(true,i,false)"><i
+                    class="fa fa-plus"></i></button>
+                <input (ngModelChange)="getTotal(true, i, true, $event)" style="width: 60px;margin-left: 10px;margin-right: 10px;" class="form-control" type="number"
+                  [(ngModel)]="cart.quantity">
+                <button type="button" class="btn btn-light  rounded-circle" (click)="getTotal(false, i, false)"><i
+                    class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="this.lstResult?.length <=0">
+          <td >Giỏ hàng chưa có món nào cả..</td>
+        </tr>
+
+
+        <!-- <tr style="height: 160px;">
+          <td style="width: 160px;height: 145px;">
+            <img class="d-block w-100" src="/assets/img/de.png" alt="First slide">
+          </td>
+          <td style="width: 500px;padding-left: 15px;">
+            <div style="height: 80px;font-size: 17px;padding-top: 3px;">
+              Đôi giày Nike thượng đỉnh, chạy bền, nổi bật, giá rẻ phải chăng
+            </div>
+            <div>
+              <a href="javascript:void(0)">Xóa</a>
+            </div>
+          </td>
+          <td style="width:140px;">
+            <div style="height: 100px;font-size: 20px;font-size: 20px;padding-left: 10px;">
+              <strong>600,000đ</strong>
+            </div>
+            <div>
+            </div>
+          </td>
+          <td style="width: 120px;">
+
+            <div style="height: 100px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light  rounded-circle" (click)="getTotal(true,false)"><i
+                    class="fa fa-plus"></i></button>
+                <input style="width: 60px;margin-left: 10px;margin-right: 10px;" class="form-control" type="number"
+                  [(ngModel)]="this.totalObj">
+                <button type="button" class="btn btn-light  rounded-circle" (click)="getTotal(false,true)"><i
+                    class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div>
+            </div>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+
+  </div>
+  <div style="float: left;width: 300px;margin-top: 10px;">
+    <div class="br-section-wrapper" style="height:190px;margin-bottom: 20px;padding-left: 40px;padding-right: 40px;">
+      <div class="row">
+        <label class="col-5">Tạm tính </label>
+        <label class="col-7" style="text-align:right;">{{this.totalBill | currency:"VND"}}</label>
+      </div>
+      <hr>
+      <div class="row">
+        <label class="col-5">Thành tiền</label>
+        <label class="col-7" style="color: #e83e8c;text-align:right;font-size: 25px;">{{this.totalBill | currency:"VND"}}</label>
+      </div>
+
+
+
+
+
+    </div>
+    <button (click)="order()" [ngClass]="lstResult && lstResult.length == 0 ? 'disabled' : ''" class="btn btn-pink btn-block mg-b-10">Tiến hành đặt hàng</button>
+  </div>
+</div>
+
+
+

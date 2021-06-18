@@ -1,0 +1,33 @@
+.material-icons {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+/* html, body { height: 100%; } */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body {
+  transition-property: padding-right;
+  transition-duration: 0.4s;
+  padding-right: 0px;
+
+  background: rgb(239, 239, 239);
+}
+
+body.has-roster {
+  padding-right: 14em;
+}
+
+
+.mt-80p {
+  margin-top: 80px;
+}
+
+.mt-20p {
+  margin-top: 20px;
+}
+
+.pl-55p {
+  padding-left: 55px;
+}

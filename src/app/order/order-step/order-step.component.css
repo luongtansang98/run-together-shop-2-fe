@@ -1,0 +1,114 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+::ng-deep .mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+
+.delivery-form {
+  border: 1px solid rgb(221, 221, 221);
+  padding: 15px;
+}
+
+.payment-form {
+  border: 1px solid rgb(221, 221, 221);
+  padding: 15px;
+}
+
+.customer-info {
+  border: 1px solid rgb(221, 221, 221);
+  padding: 15px;
+}
+
+.order-info {
+  border: 1px solid rgb(221, 221, 221);
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.btn-buy {
+  margin-top: 15px;
+  width: 360px;
+  height: 50px;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  border: 1px solid rgb(172, 34, 39);
+  outline-color: rgb(204, 204, 204);
+  border-radius: 3px;
+  background: linear-gradient(rgb(239, 57, 89), rgb(215, 32, 65));
+}
+
+.btn-edit-address {
+  border: 1px solid rgb(204, 204, 204);
+  font-size: 12px;
+  height: 31px;
+  outline-color: rgb(204, 204, 204);
+  background: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
+  border-radius: 2px;
+  color: rgb(51, 51, 51);
+}
+
+.btn-edit-order {
+  border: 1px solid rgb(204, 204, 204);
+  font-size: 12px;
+  height: 31px;
+  outline-color: rgb(204, 204, 204);
+  background: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
+  border-radius: 2px;
+  color: rgb(51, 51, 51);
+}
+
+.info-toggle {
+  color: #0000cc;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.info-review-container {
+  border-top: 1px solid rgb(221, 221, 221);
+  padding-top: 15px;
+  margin-top: 15px;
+}
+.info-review {
+
+}
+.info-review > .product-number {
+  font-weight: bold;
+}
+
+.info-review > .product-name {
+  color:#0000cc;
+}
+
+.customer-address {
+  word-break: break-word;
+}
+
+.total-money-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-money > .money {
+  color: rgb(238, 35, 71);
+  float: right;
+}
+
+.total-money > .note {
+  color: rgb(80, 80, 80);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.recheck-text {
+  color: rgb(80, 80, 80);
+  font-size: 13px;
+}
+
+.stepper-container {
+  margin-top: 80px;
+  margin-right: 15px;
+}

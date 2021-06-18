@@ -1,0 +1,56 @@
+<!-- <img src="/assets/img/login.jpg" class="mx-auto d-block">
+<form #form="ngForm" class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <i class="fa fa-american-sign-language-interpreting fa-5x" aria-hidden="true"> </i>
+    <label>UserName</label>
+    <input class="form-control" #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName" required>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button [disabled]="form.invalid" type="submit" class="btn btn-lg btn-block" >Login</button>
+    </div>
+  </div>
+</form> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<div class="d-flex align-items-center justify-content-center ht-100v">
+    <video id="headVideo" class="pos-absolute a-0 wd-100p ht-100p object-fit-cover" autoplay="" muted loop="">
+      <source src="assets/app/videos/video1.mp4" type="video/mp4">
+      <source src="assets/app/videos/video1.ogv" type="video/ogg">
+      <source src="assets/app/videos/video1.webm" type="video/webm">
+    </video><!-- /video -->
+    <div class="overlay-body bg-black-7 d-flex align-items-center justify-content-center">
+      <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 rounded bg-black-6">
+        <div class="signin-logo tx-center tx-28 tx-bold tx-white">Quản trị</div>
+        <div class="tx-white-5 tx-center mg-b-60">Trang dành cho quản trị website</div>
+
+        <div class="form-group">
+          <input type="text" class="form-control fc-outline-dark" [(ngModel)]="formModel.userName" placeholder="Nhập tên đăng nhập">
+        </div><!-- form-group -->
+        <div class="form-group">
+          <input type="password" class="form-control fc-outline-dark" [(ngModel)]="formModel.password" placeholder="Nhập mật khẩu">
+          <a href="" class="tx-info tx-12 d-block mg-t-10">Quên mật khẩu?</a>
+        </div><!-- form-group -->
+        <button type="submit" class="btn btn-info btn-block" (click)="onSubmit()">Đăng nhập</button>
+
+        <div class="mg-t-60 tx-center">Chưa có tài khoản? <a [routerLink]="'/admin/registration'" href="javascript:void(0)" class="tx-info">Đăng ký</a></div>
+      </div><!-- login-wrapper -->
+    </div><!-- overlay-body -->
+  </div>
+
+</body>
+</html>

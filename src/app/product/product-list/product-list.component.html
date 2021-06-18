@@ -1,0 +1,287 @@
+<div class="wrapper ">
+  <div class="overlay wait" *ngIf="this.isLoad">
+    <div class="spinner-wrapper">
+      <div class="container">
+        <div class="row">
+          <div id="loader" style="margin-left: 630px;">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="loading"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="this.isLoad">
+    <div style="border-right: 1px solid lightblue; padding-top: 0px;" class="sidenav">
+      <!-- category -->
+      <div class="card widget-12 shadow-base">
+        <div class="card-header">
+          <div class="card-title">Danh mục</div>
+        </div><!-- card-header -->
+        <div class="card-body">
+          <div class="list-group list-group-flush tx-13">
+            <a href="" class="list-group-item list-group-item-action">Chạy bộ</a>
+            <a href="" class="list-group-item list-group-item-action">Thi đấu</a>
+            <a href="" class="list-group-item list-group-item-action">Dạo phố</a>
+            <a href="" class="list-group-item list-group-item-action">Erobic</a>
+            <a href="" class="list-group-item list-group-item-action">Gym</a>
+          </div><!-- list-group -->
+        </div>
+
+      </div>
+      <!-- end category -->
+      <!-- review -->
+      <div style="margin-top: 15px;" class="card widget-12 shadow-base">
+        <div class="card-header">
+          <div class="card-title">Đánh giá</div>
+        </div><!-- card-header -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span class="tx-18 valign-top">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+            </span>
+            <a href="" class="align-self-center">5 Sao</a>
+          </li>
+          <li class="list-group-item">
+            <span class="tx-18 valign-top">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <a href="" class="align-self-center">4 Sao</a>
+          </li>
+          <li class="list-group-item">
+            <span class="tx-18 valign-top">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <a href="" class="align-self-center">3 Sao</a>
+          </li>
+          <li class="list-group-item">
+            <span class="tx-18 valign-top">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <a href="" class="align-self-center">2 Sao</a>
+          </li>
+          <li class="list-group-item">
+            <span class="tx-18 valign-top">
+              <i class="fa fa-star  tx-warning"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+              <i class="fa fa-star  tx-gray-500"></i>
+            </span>
+            <a href="" class="align-self-center">1 Star</a>
+          </li>
+        </ul>
+      </div>
+      <!-- end review  -->
+      <!-- color -->
+      <div style="margin-top: 15px;" class="card widget-12 shadow-base">
+        <div class="card-header">
+          <div class="card-title">Màu sắc</div>
+        </div><!-- card-header -->
+        <div class="card-body">
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-primary"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-info"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-teal"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-success"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-warning"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-danger"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-gray-300"></a>
+          <a href="" class="d-inline-block wd-20 ht-20 rounded-circle bg-gray-800"></a>
+        </div><!-- card-body -->
+      </div>
+      <!-- end color  -->
+      <!-- price  -->
+      <div style="margin-top: 15px;" class=" slidecontainer card widget-12 shadow-base">
+        <div class="card-header">
+          <div class="card-title">Khoảng giá</div>
+        </div><!-- card-header -->
+        <div class="card-body">
+          <div class="row">
+            <input maxlength="10" type="text" class="form-control col-5 text-center" appVndOnly>
+            <div class="col-2"> <label style="font-size: 30px;">-</label> </div>
+            <input maxlength="10" type="text" class="form-control col-5 text-center" appVndOnly>
+          </div>
+          <div class="row  d-flex align-items-center justify-content-center">
+            <button class="form-control btn-success" style="width: 200px;">Áp dụng</button>
+          </div>
+        </div><!-- card-body -->
+      </div>
+
+      <!-- end price  -->
+    </div>
+    <div class="br-section-wrapper" style="height: 1400px;margin-left: 307px;margin-top: 90px;">
+
+      <div class="row">
+        <ul class="nav nav-effect nav-effect-5 flex-column flex-md-row col-9" role="tablist">
+          <li class="nav-item"><a (click)="getListByFilter(1)" class="nav-link active" data-toggle="tab"
+              href="javascript:void(0)" role="tab">Mới</a></li>
+          <li class="nav-item"><a (click)="getListByFilter(2)" class="nav-link" data-toggle="tab"
+              href="javascript:void(0)" role="tab">Bán chạy</a></li>
+          <li class="nav-item"><a (click)="getListByFilter(3)" class="nav-link" data-toggle="tab"
+              href="javascript:void(0)" role="tab">Giảm giá nhiều</a></li>
+          <li class="nav-item"><a (click)="getListByFilter(4)" class="nav-link" data-toggle="tab"
+              href="javascript:void(0)" role="tab">Giá thấp</a></li>
+          <li class="nav-item"><a (click)="getListByFilter(5)" class="nav-link" data-toggle="tab"
+              href="javascript:void(0)" role="tab">Giá cao</a></li>
+        </ul>
+        <div class="input-group col-3">
+          <input type="search" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+          <div class="input-group-append">
+            <button id="button-addon1" type="button" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+        <!-- <div class="col-3 input-group hidden-xs-down wd-170 transition"><input class="form-control" id="searchbox" [placeholder]="currentSearchText" type="text"><span class="input-group-btn" style="width:30px"><button class="btn btn-secondary" style="width: 40px;" type="button"><i class="fa fa-search"></i></button></span></div> -->
+
+        <!-- <div class="input-group col-4">
+          <input type="text" class="form-control" [placeholder]="currentSearchText">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+          </div>
+        </div> -->
+      </div>
+      <hr>
+      <!-- pagination -->
+      <!-- <div class="ht-80  d-flex align-items-center justify-content-end mg-t-20">
+        <ul class="pagination pagination-circle mg-b-0">
+          <li class="page-item hidden-xs-down">
+            <a class="page-link" href="#" aria-label="First"><i class="fa fa-angle-double-left"></i></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous"><i class="fa fa-angle-left"></i></a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item hidden-xs-down"><a class="page-link" href="#">3</a></li>
+          <li class="page-item hidden-xs-down"><a class="page-link" href="#">4</a></li>
+          <li class="page-item disabled"><span class="page-link">...</span></li>
+          <li class="page-item"><a class="page-link" href="#">10</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a>
+          </li>
+          <li class="page-item hidden-xs-down">
+            <a class="page-link" href="#" aria-label="Last"><i class="fa fa-angle-double-right"></i></a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end pagination  -->
+      <div class="row row-sm mg-t-20">
+
+        <!-- <label style="padding-right: 20px;align-self: center;">Lọc theo </label>
+        <select class="form-control" style="width: 200px;">
+          <option value=0>-Lọc theo-</option>
+          <option value=1>Giá thấp đến cao</option>
+          <option value=2>Giá cao đến thấp</option>
+        </select> -->
+      </div>
+
+      <div *ngIf="products">
+        <div *ngFor="let i of rowIndexArray" class="row row-sm mg-t-20">
+          <div *ngIf="products[3*i]" style="align-self: flex-end;" class="col-md-6 col-lg-4 hoo">
+            <div class="card card-block bd-0 shadow-base pd-20">
+              <a [routerLink]="products[3*i].id" href="javascript:void(0)" style="text-align: center;">
+                <img style="width: 225px;" [src]="createImgPath(products[3*i].firseImagePath)" class="img-fluid" alt="">
+              </a>
+              <div class="d-flex justify-content-between align-items-center mg-t-20">
+                <div>
+                  <h6 class="tx-14 tx-normal mg-b-2"><a href="javascript:void(0)" [routerLink]="products[3*i].id"
+                      class="tx-inverse">{{products[3*i].name}}</a></h6>
+                  <span class="tx-13">{{products[3*i].description}}</span>
+                </div>
+                <div class="tx-right">
+                  <span class="tx-15">{{products[3*i].priceExport | currency:"VND":true}}</span>
+                </div>
+              </div><!-- d-flex -->
+            </div><!-- card -->
+          </div><!-- col-4 -->
+          <div *ngIf="products[3*i+1]" style="align-self: flex-end;" class="col-md-6 col-lg-4 mg-t-20 mg-md-t-0 hoo">
+            <div class="card card-block bd-0 shadow-base pd-20">
+              <a [routerLink]="products[3*i+1].id" style="text-align: center;" href="javascript:void(0)"><img
+                  style="width: 225px;" [src]="createImgPath(products[3*i+1].firseImagePath)" class="img-fluid"
+                  alt=""></a>
+              <div class="d-flex justify-content-between align-items-start mg-t-20">
+                <div>
+                  <h6 class="tx-14 tx-normal mg-b-2"><a href="javascript:void(0)" [routerLink]="products[3*i+1].id"
+                      class="tx-inverse">{{products[3*i+1].name}}</a></h6>
+                  <span class="tx-13">{{products[3*i+1].description}}</span>
+                </div>
+                <div class="tx-right">
+                  <span class="tx-15">{{products[3*i+1].priceExport | currency:"VND":true}}</span>
+                </div>
+              </div><!-- d-flex -->
+            </div><!-- card -->
+          </div><!-- col-4 -->
+          <div *ngIf="products[3*i+2]" style="align-self: flex-end;" class="col-md-6 col-lg-4 mg-t-20 mg-lg-t-0 hoo">
+            <div class="card card-block bd-0 shadow-base pd-20">
+              <a [routerLink]="products[3*i+2].id" style="text-align: center;" href="javascript:void(0)"><img
+                  style="width: 225px;" [src]="createImgPath(products[3*i+2].firseImagePath)" class="img-fluid"
+                  alt=""></a>
+              <div class="d-flex justify-content-between align-items-center mg-t-20">
+                <div>
+                  <h6 class="tx-14 tx-normal mg-b-2"><a href="javascript:void(0)" [routerLink]="products[3*i+2].id"
+                      class="tx-inverse">{{products[3*i+2].name}}</a></h6>
+                  <span class="tx-13">{{products[3*i+2].description}}</span>
+                </div>
+                <div class="tx-right">
+                  <span class="tx-15">{{products[3*i+2].priceExport | currency:"VND":true}}</span>
+                </div>
+              </div><!-- d-flex -->
+            </div><!-- card -->
+          </div><!-- col-4 -->
+        </div>
+      </div>
+
+
+
+      <!-- pagination -->
+      <app-paging (getPage)="getList($event)" [pageCount]="this.pagingResult?.pageCount"
+        [currentPage]="this.pagingResult?.currentPage"></app-paging>
+      <!-- <div class="ht-80  d-flex align-items-center justify-content-center mg-t-20">
+        <ul class="pagination pagination-circle mg-b-0">
+          <li class="page-item hidden-xs-down">
+            <a class="page-link" href="#" aria-label="First"><i class="fa fa-angle-double-left"></i></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous"><i class="fa fa-angle-left"></i></a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item hidden-xs-down"><a class="page-link" href="#">3</a></li>
+          <li class="page-item hidden-xs-down"><a class="page-link" href="#">4</a></li>
+          <li class="page-item disabled"><span class="page-link">...</span></li>
+          <li class="page-item"><a class="page-link" href="#">10</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a>
+          </li>
+          <li class="page-item hidden-xs-down">
+            <a class="page-link" href="#" aria-label="Last"><i class="fa fa-angle-double-right"></i></a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- end pagination  -->
+    </div>
+  </div>
+</div>
