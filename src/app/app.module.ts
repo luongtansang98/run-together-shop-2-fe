@@ -17,9 +17,10 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { MatAutocompleteModule, MatButtonModule, MatInputModule, MatStepperModule } from '@angular/material';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { ProductManagementModule } from './admin/product-management/product-management.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
-    NgxSpinnerModule
+    LoadingBarModule,
+    LoadingBarHttpClientModule
   ],
   providers: [UserService,
     {
@@ -58,7 +60,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
       multi: true
 
     },
-    CurrencyPipe, DecimalPipe],
+    CurrencyPipe, DecimalPipe,
+    { provide: LOADING_BAR_CONFIG, useValue: { latencyThreshold: 100 } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

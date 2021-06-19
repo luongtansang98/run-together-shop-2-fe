@@ -4,7 +4,6 @@ import { PagingModel } from 'src/app/utilities/paging-model.model';
 import { ProductDTO } from 'src/app/admin/product-management/product-management.model';
 import { ProductManagementService } from 'src/app/admin/product-management/product-management.service';
 import { Filter } from 'src/app/helper/enum/user-role.enum';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var $: any;
 @Component({
@@ -32,8 +31,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductManagementService,
-    private spinner: NgxSpinnerService
+    private productService: ProductManagementService
   ) { }
 
   ngOnInit() {
@@ -47,10 +45,8 @@ export class ProductListComponent implements OnInit {
   }
   getList(event?: any) {
     window.scroll(0, 0);
-    // this.spinner.show();
     if (!event) this.searchModel.page = 1;
     else this.searchModel.page = event;
-    // this.isLoad = true;
 
     this.productService.getList(this.searchModel).subscribe(
       (res: any) => {
@@ -61,9 +57,7 @@ export class ProductListComponent implements OnInit {
         this.rowIndexArray = Array.from(Array(Math.ceil((this.products.length + 1) / 3)).keys());
       },
       null,
-      () => {
-        // this.spinner.hide();
-      }
+      () => {}
     );
 
   }

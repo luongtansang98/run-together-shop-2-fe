@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HelperModule } from '../helper/helper.module';
 import { LoginToBuyComponent } from './login-to-buy/login-to-buy.component';
 import { RouterModule } from '@angular/router';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 

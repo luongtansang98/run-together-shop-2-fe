@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { LoadingService } from './auth/loading.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class AppComponent implements OnInit{
   /**
    *
    */
-  constructor(private _route: Router, public loadingService: LoadingService, public spinner: NgxSpinnerService) {
+  constructor(private _route: Router, public loadingService: LoadingService) {
     this._route.events.subscribe((routerEvent: Event) => {
       if (routerEvent instanceof NavigationStart) {
         this.showLoadingIndicator = true;
@@ -27,6 +26,5 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.loadingService.isLoading$.subscribe(async  res =>   console.log(await res));
   }
 }

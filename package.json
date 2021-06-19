@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ngx-loading-bar/core": "^5.1.2",
+    "@ngx-loading-bar/http-client": "^5.1.2",
     "@pazznetwork/ngx-chat": "^0.10.6",
     "@types/googlemaps": "^3.39.7",
     "@types/jquery": "^3.5.0",

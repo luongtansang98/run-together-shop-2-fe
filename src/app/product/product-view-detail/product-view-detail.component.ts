@@ -10,7 +10,6 @@ import { CartService } from 'src/app/cart/cart.service';
 import { CartDTO } from 'src/app/cart/cart.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginToBuyComponent } from '../login-to-buy/login-to-buy.component';
-import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-product-view-detail',
   templateUrl: './product-view-detail.component.html',
@@ -61,8 +60,7 @@ export class ProductViewDetailComponent implements OnInit {
     private customerService: CustomerService,
     private modalService: BsModalService,
     private route: Router,
-    private sanitizer: DomSanitizer,
-    private spinner: NgxSpinnerService) { }
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.cartObj = new CartDTO();
@@ -97,16 +95,13 @@ export class ProductViewDetailComponent implements OnInit {
 
   getProductById(productId: any) {
     window.scroll(0, 0);
-    // this.spinner.show();
     this.productService.getById(productId).subscribe(
       (res: any) => {
         this.product = res as ProductDTO;
         console.log(this.product);
         console.log(this.product.sizes);
       },
-      error => {
-        //  this.spinner.hide();
-         },
+      error => {},
       () => {
         this.galleryImages = [];
         for (var i = 0; i < this.product.imagesList.length; i++) {
@@ -121,7 +116,6 @@ export class ProductViewDetailComponent implements OnInit {
           );
           this.galleryImages.push(images);
         }
-        this.spinner.hide();
       }
 
     )

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component,ViewEncapsulation, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 declare var $: any;
 @Component({
   selector: 'app-home',
