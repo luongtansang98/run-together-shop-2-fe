@@ -5,11 +5,11 @@ import { ProductDTO } from '../../product-management/product-management.model';
 import { ProductManagementService } from '../../product-management/product-management.service';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+  selector: 'app-promotion-list',
+  templateUrl: './promotion-list.component.html',
+  styleUrls: ['./promotion-list.component.css']
 })
-export class OrderListComponent implements OnInit {
+export class PromotionListComponent implements OnInit {
   searchModel = {
     CodeOrNameProduct: '',
     GroupProductId: '',

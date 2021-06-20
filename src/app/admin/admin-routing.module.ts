@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () => import('./product-management/product-management.module').then(m => m.ProductManagementModule)
       },
       {
+        path: 'promotion',
+        loadChildren: () => import('./promotion-management/promotion-management.module').then(m => m.PromotionManagementModule)
+      },
+      {
         path: 'customer-list',
         loadChildren: () => import('./customer-management/customer-management.module').then(m => m.CustomerManagementModule)
       },
