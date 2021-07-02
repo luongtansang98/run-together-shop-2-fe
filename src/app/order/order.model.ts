@@ -7,4 +7,5 @@ export class OrderModel {
   shipPhone: string;
   dliveryType: string;
   paymentType: string;
+  orderDate: any;
 }

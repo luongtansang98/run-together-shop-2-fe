@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PaymentType } from 'src/app/utilities/enum/enum-type.model';
 import { PagingModel } from 'src/app/utilities/paging-model.model';
 import { ProductDTO } from '../../product-management/product-management.model';
 import { ProductManagementService } from '../../product-management/product-management.service';
+import { OrderDTO } from '../order-management.model';
+import { OrderManagementService } from '../order-management.service';
 
 @Component({
   selector: 'app-order-list',
@@ -11,16 +14,17 @@ import { ProductManagementService } from '../../product-management/product-manag
 })
 export class OrderListComponent implements OnInit {
   searchModel = {
-    CodeOrNameProduct: '',
-    GroupProductId: '',
-    CategoryId: '',
+    OrderCode: '',
+    OrderStatus: '',
+    DeliveryType: '',
+    PaymentType: '',
     page: 1
   };
   isLoad: boolean = false;
   pagingResult: PagingModel = new PagingModel();
   pageCount: number;
-  products: ProductDTO[] = [];
-  constructor(private productService: ProductManagementService, private router: Router) { }
+  orders: OrderDTO[] = [];
+  constructor(private orderService: OrderManagementService, private router: Router) { }
 
   ngOnInit() {
     this.getList();
@@ -31,11 +35,11 @@ export class OrderListComponent implements OnInit {
     this.isLoad = true;
     window.scroll(0, 0);
     setTimeout(() => {
-      this.productService.getList(this.searchModel)
+      this.orderService.getList(this.searchModel)
         .subscribe(
           (res: any) => {
             this.pagingResult = res;
-            this.products = res.results as ProductDTO[] || [];
+            this.orders = res.results as OrderDTO[] || [];
             this.pageCount = res.pageCount as number;
           },
           null,

@@ -1,31 +1,60 @@
-<div class="flex">
-  <div class="flex-item">
-    <div style="display: block;">
-    <canvas baseChart width="400" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType"
-                [plugins]="lineChartPlugins"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+<h4>Doanh thu tuần vừa qua</h4>
+<div class="br-section-wrapper" >
+  <div class="flex">
+    <div class="flex-item">
+      <div style="display: block;">
+      <canvas baseChart width="400" height="120"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors1"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  [plugins]="lineChartPlugins"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
     </div>
   </div>
-  <div class="flex-item">
-    <table class="table table-responsive table-condensed">
-      <tr>
-        <th *ngFor="let label of lineChartLabels">{{label}}</th>
-      </tr>
-      <tr *ngFor="let d of lineChartData; let i=index" [class]="'line-'+i">
-        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-      </tr>
-    </table>
-    <button mat-button mat-raised-button color="primary" (click)="randomize()">Randomize</button>
-    <button mat-button mat-raised-button color="primary" (click)="pushOne()">Push</button>
-    <button mat-button mat-raised-button color="primary" (click)="changeColor()">Recolor</button>
-    <button mat-button mat-raised-button color="primary" (click)="hideOne()">Toggle Series B</button>
-    <button mat-button mat-raised-button color="primary" (click)="changeLabel()">Change Label</button>
+</div>
+
+<h4>Thống kê lượng đơn đặt hàng</h4>
+<div class="br-section-wrapper" >
+  <div class="flex">
+    <div class="flex-item">
+      <div style="display: block;">
+      <canvas baseChart width="400" height="120"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors2"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  [plugins]="lineChartPlugins"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
   </div>
 </div>
+
+<h4>Top các sản phẩm bán chạy</h4>
+<div class="br-section-wrapper" >
+  <div class="flex">
+    <div class="flex-item">
+      <div style="display: block;">
+      <canvas baseChart width="400" height="120"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors3"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  [plugins]="lineChartPlugins"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+

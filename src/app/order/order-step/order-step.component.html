@@ -66,13 +66,20 @@
           <div class="row">
             <div class="col-md-12">
               <span>Địa chỉ giao hàng</span>
-              <button style="float:right" class="btn-edit-address">Sửa</button>
+              <button style="float:right" (click)="editAddress()" class="btn-edit-address">{{ !isEditAddress ? 'Sửa' : 'Cập nhật'}}</button>
             </div>
           </div>
           <hr>
           <p><strong>{{customerInfo.fullName}}</strong></p>
-          <p class="customer-address">{{customerInfo.address}}</p>
-          <p>Điện thoại: {{customerInfo.phone}}</p>
+          <div *ngIf="isEditAddress">
+            <input type="text" class="form-control" formControlName="shipAddress" />
+            <input type="text" class="form-control" formControlName="shipPhone" style="margin-top: 15px;"/>
+          </div>
+          <div *ngIf="!isEditAddress">
+            <p class="customer-address">{{customerInfo.address}}</p>
+            <p>Điện thoại: {{customerInfo.phone}}</p>
+          </div>
+
         </div>
         <div class="order-info">
           <p><strong>Đơn hàng</strong></p>
