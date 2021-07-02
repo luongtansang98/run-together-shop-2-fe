@@ -57,23 +57,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of this.pagingResult?.results; index as i">
+        <tr *ngFor="let order of this.pagingResult?.results; index as i">
           <td>{{this.pagingResult?.pageSize * (this.pagingResult?.currentPage - 1) + (i + 1)}}</td>
-          <td><a [routerLink]="[ product.id]">{{ 'POxujw' +i}}</a></td>
-          <td>{{product.code}}</td>
-          <td>{{product.name}}</td>
-          <td>{{product.description}}</td>
-          <td>{{getDescription(product.productGroupId,1)}}</td>
-          <td>{{getDescription(product.colorId,2)}}</td>
-          <td>{{getDescription(product.categoryId,3)}}</td>
-          <td>{{product.priceImport| currency:"VND"}}</td>
-          <td>{{product.priceExport| currency:"VND"}}</td>
-          <td>{{product.priceExport| currency:"VND"}}</td>
+          <td><a [routerLink]="[ order.id]">{{ order.code }}</a></td>
+          <td>{{order.orderDate | date:'yyyy/MM/dd hh:mm'}}</td>
+          <td>{{order.shipName}}</td>
+          <td>{{order.note}}</td>
+          <td>{{order.shipAddress}}</td>
+          <td>{{order.shipEmail}}</td>
+          <td>{{order.shipPhone}}</td>
+          <td>{{order.deliveryTypeStr}}</td>
+          <td>{{order.paymentTypeStr}}</td>
+          <td>{{order.statusStr}}</td>
           <td>
-            <a href="javascript:void(0)" (click)="refProductDetail.showModal(product.id)" class="btn-primary btn-icon" title="Sửa">
+            <a href="javascript:void(0)" (click)="refProductDetail.showModal(order.id)" class="btn-primary btn-icon" title="Sửa">
               <div><i class="fa fa-pencil"></i></div>
             </a>
-            <a href="#" class="btn-danger btn-icon" title="Xóa">
+            <a href="#" class="btn-danger btn-icon" title="Xóa" style="margin-left: 5px;">
               <div><i class="fa fa-trash"></i></div>
             </a>
           </td>

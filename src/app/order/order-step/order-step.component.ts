@@ -21,16 +21,8 @@ import { OrderService } from '../order.service';
   }]
 })
 export class OrderStepComponent implements OnInit, AfterViewInit {
-  // @ViewChild('stepper', { static: false }) stepper: MatStepper;
-  // isLinear = true;
-  // secondFormGroup: FormGroup;
-  // selectedIndexStep = 0;
-  // formGroup2: FormGroup;
-  // formGroup3: FormGroup;
-  // currentUser: any;
   temporaryBill = 0;
   deliveryFee = 30000;
-  // public delive: DeliveryType = DeliveryType.Standard;
 
   lstResult: CartDTO[] = [];
 
@@ -45,6 +37,7 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
   isCompleted = false;
   isToggle = false;
   customerInfo: CustomerModel;
+  isEditAddress = false;
 
   constructor(private _formBuilder: FormBuilder,
     private cusService: CustomerService,
@@ -74,27 +67,6 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
     }
 
     this.getList();
-
-    // if (this.currentUser) {
-    //   this.selectedIndexStep = 1;
-    //   var fafa = this.currentUser.fullName as string;
-    //   var address = this.currentUser.address as string;
-    //   var phone = this.currentUser.phone as string;
-    //   var email = this.currentUser.email as string;
-
-    //   this.formGroup2 = new FormGroup({
-    //     id: new FormControl(),
-    //     name: new FormControl(fafa),
-    //     address: new FormControl(address),
-    //     phoneNumber: new FormControl(phone),
-    //     email: new FormControl(email)
-    //   });
-    //   this.formGroup3 = new FormGroup({
-    //     deliveryType: new FormControl('0'),
-    //     paymentType: new FormControl('0')
-    //   });
-    //   this.getList();
-    // }
   }
 
   buildForm3(customerModel: CustomerModel) {
@@ -124,6 +96,7 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
     }
     else {
       let req = this.thirdFormGroup.value as OrderModel;
+      req.orderDate = new Date();
       this.orderService.CompleteOrder(req).subscribe({
         complete: () => { }, // completeHandler
         error: () => { this.toastr.error("Vui lòng thử lại sau ít phút.") },    // errorHandler
@@ -153,5 +126,9 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
 
   getTotalBill() {
     return this.temporaryBill + this.deliveryFee;
+  }
+
+  editAddress() {
+    this.isEditAddress = !this.isEditAddress;
   }
 }
