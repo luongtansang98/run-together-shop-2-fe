@@ -40,7 +40,7 @@
     </a>
   </div>
   <div class="row d-flex align-items-center justify-content-end mg-b-20">
-    <button type="button" class="btn btn-info   btn-with-icon btn-block mg-t-10 wd-200" style="margin-right: 15px;" [routerLink]="['create']" routerLinkActive="router-link-active">
+    <button type="button" class="btn btn-info   btn-with-icon btn-block mg-t-10 wd-200" style="margin-right: 15px;" (click)="refProductDetail.showModal()">
     <!-- <a href="javascript:void(0)" class="btn btn-info   btn-with-icon btn-block mg-t-10 wd-200" style="margin-right: 15px;"
     (click)="refProductDetail.showModal()"> -->
       <div class="ht-40 " >
@@ -71,11 +71,7 @@
         <tr *ngFor="let product of this.pagingResult?.results; index as i">
           <td>{{this.pagingResult?.pageSize * (this.pagingResult?.currentPage - 1) + (i + 1)}}</td>
           <td><a href="javascript:void(0)" (click)="refImagesDetail.showModal(product.id)">Có {{product.countImage}} hình</a></td>
-          <td>
-            <a href="javascript:void(0)" [routerLink]="[product.id]" routerLinkActive="router-link-active">
-              {{product.code}}
-            </a>
-          </td>
+          <td>{{product.code}}</td>
           <td>{{product.name}}</td>
           <td>{{product.description}}</td>
           <td>{{getDescription(product.productGroupId,1)}}</td>
@@ -84,7 +80,7 @@
           <td>{{product.priceImport| currency:"VND"}}</td>
           <td>{{product.priceExport| currency:"VND"}}</td>
           <td>
-            <a href="javascript:void(0)" [routerLink]="[product.id, 'edit']" routerLinkActive="router-link-active" class="btn btn-primary btn-icon" title="Sửa">
+            <a href="javascript:void(0)" (click)="refProductDetail.showModal(product.id)" class="btn btn-primary btn-icon" title="Sửa">
               <div><i class="fa fa-pencil"></i></div>
             </a>
             <a href="#" class="btn btn-danger btn-icon" title="Xóa">
@@ -101,8 +97,6 @@
 </div>
 <app-paging (getPage)="getList($event)" [pageCount]="this.pagingResult?.pageCount"
         [currentPage]="this.pagingResult?.currentPage"></app-paging>
-
-
-<!-- <app-product-detail #refProductDetail></app-product-detail> -->
+<app-product-detail #refProductDetail></app-product-detail>
 <app-product-images-detail #refImagesDetail></app-product-images-detail>
 

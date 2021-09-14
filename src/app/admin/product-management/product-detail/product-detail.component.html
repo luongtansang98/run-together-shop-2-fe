@@ -1,143 +1,106 @@
-<h5 class="modal-title">{{ action == 'edit' ? 'Chỉnh sửa ' : (action == 'create' ? 'Thêm mới ' : 'Xem chi tiết ')}} sản phẩm</h5>
-<div style="width: 50%;float: left;padding-right: 10px;">
-  <div class="">
-    <label>Danh sách hình ảnh</label>
-  </div>
-  <div class="form-group row">
-    <img [src]="imageUrl" (click)="file.click()" class="col-12" style="height:350px">
-    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,1)" style="display:none;">
-  </div>
-  <div class="form-group row">
-
-    <img [src]="imageUrl2" (click)="file2.click()" class="col-4" style="width: 80px; height:130px">
-
-
-    <input type="file" #file2 placeholder="Choose file" (change)="uploadFile(file2.files,2)" style="display:none;">
-    <img [src]="imageUrl3" (click)="file3.click()" class="col-4" style="width: 80px; height:130px">
-    <img [src]="imageUrl4" (click)="file4.click()" class="col-4" style="width: 80px; height:130px">
-    <input type="file" #file3 placeholder="Choose file" (change)="uploadFile(file3.files,3)" style="display:none;">
-    <input type="file" #file4 placeholder="Choose file" (change)="uploadFile(file4.files,4)" style="display:none;">
-
-  </div>
-
-</div>
-<div style="width: 50%;float:right;padding-left: 10px;border-left: 1px solid #cfd6de;">
-  <form [formGroup]="formDetail" enctype="multipart/form-data" *ngIf="formDetail">
-    <div class="form-group row">
-      <label class="col-3">Mã sản phẩm</label>
-      <input type="text" class="form-control col-9" formControlName="code">
-    </div>
-    <div class="form-group row">
-      <label class="col-3">Tên sản phẩm</label>
-      <input type="text" class="form-control col-9" formControlName="name">
-    </div>
-    <div class="form-group  row">
-      <label class="col-3">Mô tả</label>
-      <textarea class="form-control col-9" formControlName="description"></textarea>
-    </div>
-    <div class="form-group  row">
-      <label class="col-3">Nhóm sản phẩm</label>
-      <div class="col-9">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="productGroupId" value="1"
-            [checked]="this.formDetail.value.productGroupId === 1" formControlName="productGroupId">
-          <label class="form-check-label" for="inlineRadio1">Nam</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="productGroupId" value="2"
-            [checked]="this.formDetail.value.productGroupId === 2" formControlName="productGroupId">
-          <label class="form-check-label" for="inlineRadio2">Nữ</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="productGroupId" value="3"
-            [checked]="this.formDetail.value.productGroupId === 3" formControlName="productGroupId">
-          <label class="form-check-label" for="inlineRadio2">Trẻ em</label>
-        </div>
+<div class="modal fade" id="productDetailModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm mới sản phẩm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+          <div style="width: 50%;float: left;padding-right: 10px;">
+            <div class="form-group row">
+              <label>Danh sách hình ảnh</label>
+            </div>
+            <div class="form-group row">
+              <img [src]="imageUrl" (click)="file.click()" class="col-12" style="height:240px">
+              <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files,1)"
+              style="display:none;">
+            </div>
+            <div class="form-group row">
 
-    </div>
-    <div class="form-group  row">
-      <label class="col-3">Danh mục</label>
-      <select class="form-control col-9" formControlName="categoryId">
-        <option value="0">-Danh mục-</option>
-        <option value="1">Thể thao</option>
-        <option value="2">Gym</option>
-        <option value="3">Chạy bộ</option>
-      </select>
-    </div>
+              <img [src]="imageUrl2" (click)="file2.click()" class="col-4" style="width: 80px; height:80px">
 
-    <div class="form-group  row" >
-      <label class="col-3">Màu sắc</label>
-      <select class="form-control col-9" formControlName="colorId">
-        <option value="0">-Màu sắc-</option>
-        <option value="1">Cam</option>
-        <option value="2">Đỏ</option>
-        <option value="3">Trắng</option>
-      </select>
-    </div>
-    <div class="form-group row">
-      <label class="col-3">Giá nhập</label>
-      <input type="text" class="form-control col-9" formControlName="priceImport" appVndOnly>
-    </div>
-    <div class="form-group row">
-      <label class="col-3">Giá xuất</label>
-      <input type="text" class="form-control  col-9" formControlName="priceExport" appVndOnly>
-    </div>
-    <div class="form-group row">
-      <label class="col-3">Áp dụng khuyến mãi</label>
-      <div class="col-9">
-        <p>
-          <a href="javascript:void(0)" (click)="openPromotionModal(template)">
-          {{ selectedPromotions && selectedPromotions.length > 0 ? ('Có áp dụng ' +
-            selectedPromotions.length + ' KM') : 'Chưa có áp dụng KM nào'}}
-          </a>
-          <ng-container *ngIf="selectedPromotions && selectedPromotions.length > 0">
-            <span style="margin-left:7px; margin-right: 7px;">|</span><a href="javascript:void(0)" (click)="removePromotion()">Huỷ áp dụng</a>
-          </ng-container>
-          </p>
-        <p class="small-txt">(Nhấn để chọn mã khuyến mãi)</p>
+
+              <input type="file" #file2 placeholder="Choose file" (change)="uploadFile(file2.files,2)"
+                style="display:none;">
+                <img [src]="imageUrl3" (click)="file3.click()" class="col-4" style="width: 80px; height:80px">
+              <img [src]="imageUrl4" (click)="file4.click()" class="col-4" style="width: 80px; height:80px">
+              <input type="file" #file3 placeholder="Choose file" (change)="uploadFile(file3.files,3)"
+                style="display:none;">
+              <input type="file" #file4 placeholder="Choose file" (change)="uploadFile(file4.files,4)"
+                style="display:none;">
+
+            </div>
+
+          </div>
+          <div style="width: 50%;float:right;padding-left: 10px;border-left: 1px solid #cfd6de;">
+            <form [formGroup]="formDetail" enctype="multipart/form-data" (ngSubmit)="onCreate()">
+              <div class="form-group row">
+                <label class="col-3">Mã sản phẩm</label>
+                <input type="text" class="form-control col-9" formControlName="code">
+              </div>
+              <div class="form-group row">
+                <label class="col-3">Tên sản phẩm</label>
+                <input type="text" class="form-control col-9" formControlName="name">
+              </div>
+              <div class="form-group  row">
+                <label class="col-3">Mô tả</label>
+                <textarea class="form-control col-9" formControlName="description"></textarea>
+              </div>
+              <div class="form-group  row">
+                <label class="col-3">Nhóm sản phẩm</label>
+                <div class="col-9">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="productGroupId" value="1"
+                    [checked]="this.formDetail.value.productGroupId === 1" formControlName="productGroupId">
+                    <label class="form-check-label" for="inlineRadio1">Nam</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="productGroupId" value="2"
+                    [checked]="this.formDetail.value.productGroupId === 2" formControlName="productGroupId">
+                    <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="productGroupId" value="3"
+                    [checked]="this.formDetail.value.productGroupId === 3" formControlName="productGroupId">
+                    <label class="form-check-label" for="inlineRadio2">Trẻ em</label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group  row" style="padding-left: 15px;">
+                <select class="form-control col-6" formControlName="categoryId">
+                  <option value="0">-Danh mục-</option>
+                  <option value="1">Thể thao</option>
+                  <option value="2">Gym</option>
+                  <option value="3">Chạy bộ</option>
+                </select>
+                <select class="form-control col-6" formControlName="colorId">
+                  <option value="0">-Màu sắc-</option>
+                  <option value="1">Cam</option>
+                  <option value="2">Đỏ</option>
+                  <option value="3">Trắng</option>
+                </select>
+              </div>
+              <div class="form-group row">
+                <label class="col-3">Giá nhập</label>
+                <input type="text" class="form-control col-9" formControlName="priceImport" appVndOnly>
+              </div>
+              <div class="form-group row">
+                <label class="col-3">Giá xuất</label>
+                <input type="text" class="form-control  col-9" formControlName="priceExport" appVndOnly>
+              </div>
+
+
+            </form>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="onCreate()">Lưu</button>
       </div>
     </div>
-
-  </form>
-</div>
-<div class="margin-clear"></div>
-<div class="text-center" style="margin-bottom: 25px;">
-  <button style="margin-right: 10px;" type="button" [routerLink]="['/admin/dashboard/product']"
-    routerLinkActive="router-link-active" class="btn btn-secondary">Trở về</button>
-  <button type="submit" class="btn btn-primary" (click)="onSubmit()">Lưu</button>
-</div>
-
-
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Bảng khuyến mãi</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
-  <div class="modal-body">
-    <ul>
-      <li *ngFor="let item of promotionSelection; let i = index">
-        <label class="rdiobox">
-          <input name="promotionId" type="radio" [value]="item.id" [(ngModel)]="selectedPromotionsRdo">
-          <span style="display: inline-block;">
-            <p>{{item.code}}</p>
-            <p>{{item.name}}</p>
-            <p *ngIf="item.promotionTypeId == 1">
-              {{'Giảm: ' + item.value + '%'}}
-            </p>
-            <p *ngIf="item.promotionTypeId != 1">
-              {{'Giảm: '}}{{item.value | currency:"VND" }}
-            </p>
-          </span>
-        </label>
-      </li>
-    </ul>
-
-    <div class="text-center">
-      <button (click)="modalRef.hide()" class="btn btn-secondary" style="margin-right: 10px">Hủy</button>
-      <button (click)="submitPromotion()"  class="btn btn-success">Cập nhật</button>
-    </div>
-  </div>
-</ng-template>
+</div>

@@ -1,6 +1,6 @@
 import { SafeResourceUrl } from '@angular/platform-browser';
 
-export class ProductDTO {
+export class ProductDTO{
   id: number;
   code: string;
   name: string;
@@ -8,22 +8,16 @@ export class ProductDTO {
   viewCount: number;
   priceImport: number;
   priceExport: number;
-  productGroupId: number; // nhom Nam/Nu/Tre
+  productGroupId: number; //nhom Nam/Nu/Tre
   colorId: number;
   categoryId: number;
   countImage: number;
   imagesList  = new Array<ImageProductDTO>();
   sizes  = new Array<ProductSizeDTO>();
-  firseImagePath: string;
-  promotionList: any[] = [];
-
-  promotionId: number;
-  promotionTypeId: number;
-  value: number;
-  priceWithDiscount: number;
+  firseImagePath : string;
 }
 
-export class ProductSizeDTO {
+export class ProductSizeDTO{
   id?: number;
   count: number;
   sizeNumber: number;
@@ -31,16 +25,16 @@ export class ProductSizeDTO {
   disabled: boolean;
 }
 
-export class ImageProductDTO {
+export class ImageProductDTO{
   id: number;
   imagePath: string;
   order: number;
   productId: number;
   product: ProductDTO;
 }
-export class ImageArr {
-  small?: string ;
-  medium?: string | SafeResourceUrl;
-  big?: string | SafeResourceUrl;
-  url: string;
+export class ImageArr{
+  small?:string ;
+  medium?:string | SafeResourceUrl;
+  big?:string | SafeResourceUrl;
+  url:string;
 }

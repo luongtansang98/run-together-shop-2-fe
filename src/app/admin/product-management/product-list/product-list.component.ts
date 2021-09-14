@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
     CategoryId: '',
     page: 1
   };
-  isLoad = false;
+  isLoad: boolean = false;
   pagingResult: PagingModel = new PagingModel();
   pageCount: number;
   products: ProductDTO[] = [];
@@ -25,7 +25,8 @@ export class ProductListComponent implements OnInit {
     this.getList();
   }
   getList(event?: any) {
-    if (!event) { this.searchModel.page = 1; } else { this.searchModel.page = event; }
+    if (!event) this.searchModel.page = 1;
+    else this.searchModel.page = event;
     this.isLoad = true;
     window.scroll(0, 0);
     setTimeout(() => {
@@ -43,24 +44,26 @@ export class ProductListComponent implements OnInit {
   }
 
   getDescription(id: any, type: any) {
-    if (type === 1) {
-      if (id === 1) {
-        return 'Nam';
-      } else if (id === 2) {
-        return 'Nữ';
- } else { return 'Trẻ em'; }
-    } else if (type === 2) {
-      if (id === 1) {
-        return 'Cam';
-      } else if (id === 2) {
-        return 'Đỏ';
- } else { return 'Trắng'; }
-    } else if (type === 3) {
-      if (id === 1) {
-        return 'Thể thao';
-      } else if (id === 2) {
-        return 'Gym';
- } else { return 'Chạy bộ'; }
+    if (type == 1) {
+      if (id == 1)
+        return "Nam";
+      else if (id == 2)
+        return "Nữ";
+      else return "Trẻ em";
+    }
+    else if (type == 2) {
+      if (id == 1)
+        return "Cam";
+      else if (id == 2)
+        return "Đỏ";
+      else return "Trắng";
+    }
+    else if (type == 3) {
+      if (id == 1)
+        return "Thể thao";
+      else if (id == 2)
+        return "Gym";
+      else return "Chạy bộ";
     }
   }
 
