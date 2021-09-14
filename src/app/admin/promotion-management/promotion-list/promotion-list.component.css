@@ -1,0 +1,7 @@
+.br-toggle-switch::before {
+  content: 'bật';
+}
+
+.br-toggle-switch::after {
+  content: 'tắt';
+}

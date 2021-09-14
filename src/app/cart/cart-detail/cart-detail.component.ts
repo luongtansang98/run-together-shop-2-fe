@@ -18,34 +18,34 @@ export class CartDetailComponent implements OnInit {
   advancePrice = 0;
   lstResult: CartDTO[] = [];
   constructor(private toastr: ToastrService,
-    private cartService: CartService,
-    private router:Router,
-    private customerService: CustomerService) { }
+              private cartService: CartService,
+              private router: Router,
+              private customerService: CustomerService) { }
 
   ngOnInit() {
     this.getList();
   }
   getTotal(up: boolean, ind: number, isInput: boolean, event?) {
-    if(isInput) {
-      if(Number(event) <= 0) {
+    if (isInput) {
+      if (Number(event) <= 0) {
         setTimeout(() => {
           this.lstResult[ind].quantity = 1;
         }, 100);
-      }
-      else {
+      } else {
         setTimeout(() => {
           this.lstResult[ind].quantity = event;
         }, 100);
 
       }
-      this.lstResult[ind].totalPrice = (Number(event) <= 0 ? 1 : event) * this.lstResult[ind].price;
+      // tslint:disable-next-line:max-line-length
+      this.lstResult[ind].totalPrice = (Number(event) <= 0 ? 1 : event) * (this.lstResult[ind].priceWithDiscount && Number(this.lstResult[ind].priceWithDiscount) > 0 ? this.lstResult[ind].priceWithDiscount :  this.lstResult[ind].price);
       this.totalBill = this.lstResult.reduce((sum, current) => sum + current.totalPrice, 0);
     } else if (up) {
       this.lstResult[ind].quantity++;
-      this.lstResult[ind].totalPrice = this.lstResult[ind].totalPrice + this.lstResult[ind].price;
+      // tslint:disable-next-line:max-line-length
+      this.lstResult[ind].totalPrice = this.lstResult[ind].totalPrice + (this.lstResult[ind].priceWithDiscount && Number(this.lstResult[ind].priceWithDiscount) > 0 ? this.lstResult[ind].priceWithDiscount :  this.lstResult[ind].price);
       this.totalBill = this.lstResult.reduce((sum, current) => sum + current.totalPrice, 0);
-    }
-    else {
+    } else {
       if (this.lstResult[ind].quantity <= 0) {
         Swal.fire({
           title: 'Bạn muốn xóa sản phẩm này?',
@@ -57,25 +57,25 @@ export class CartDetailComponent implements OnInit {
           cancelButtonText: 'Hủy',
         }).then((result) => {
           if (result.isConfirmed) {
-            var customerId = Number(this.customerService.getAuthCustomer().customerId);
-            if (customerId == 0 || customerId == null) {
-              this.toastr.error("Vui lòng đăng nhập để xem giỏ hàng");
+            const customerId = Number(this.customerService.getAuthCustomer().customerId);
+            if (customerId === 0 || customerId == null) {
+              this.toastr.error('Vui lòng đăng nhập để xem giỏ hàng');
               return;
             }
             this.cartService.deleteItem(customerId, this.lstResult[ind].id)
               .subscribe(
                 (res: any) => {
-                  this.toastr.success("Xóa thành công!");
+                  this.toastr.success('Xóa thành công!');
                 },
-                err => this.toastr.error("Có lỗi khi xóa sản phẩm"),
+                err => this.toastr.error('Có lỗi khi xóa sản phẩm'),
                 () => { this.getList(); }
               );
           }
-        })
-      }
-      else {
+        });
+      } else {
         this.lstResult[ind].quantity--;
-        this.lstResult[ind].totalPrice = this.lstResult[ind].totalPrice - this.lstResult[ind].price;
+        // tslint:disable-next-line:max-line-length
+        this.lstResult[ind].totalPrice = this.lstResult[ind].totalPrice - (this.lstResult[ind].priceWithDiscount && Number(this.lstResult[ind].priceWithDiscount) > 0 ? this.lstResult[ind].priceWithDiscount :  this.lstResult[ind].price);
         this.totalBill = this.lstResult.reduce((sum, current) => sum + current.totalPrice, 0);
       }
     }
@@ -88,8 +88,8 @@ export class CartDetailComponent implements OnInit {
     if (this.customerService.getAuthCustomer()) {
       customerId = Number(this.customerService.getAuthCustomer().customerId);
     }
-    if (customerId == 0 || customerId == null) {
-      this.toastr.error("Vui lòng đăng nhập để xem giỏ hàng");
+    if (customerId === 0 || customerId == null) {
+      this.toastr.error('Vui lòng đăng nhập để xem giỏ hàng');
       return;
     }
     setTimeout(() => {
@@ -107,11 +107,12 @@ export class CartDetailComponent implements OnInit {
 
   }
   deleteItem(ind: number) {
-    if (ind = 0)
-      return this.toastr.error("Sai Sai Sai");
-    var customerId = Number(this.customerService.getAuthCustomer().customerId);
-    if (customerId == 0 || customerId == null) {
-      this.toastr.error("Vui lòng đăng nhập để thực hiện chức năng này");
+    if (ind === 0) {
+      return this.toastr.error('Sai Sai Sai');
+    }
+    const customerId = Number(this.customerService.getAuthCustomer().customerId);
+    if (customerId === 0 || customerId == null) {
+      this.toastr.error('Vui lòng đăng nhập để thực hiện chức năng này');
       return;
     }
     Swal.fire({
@@ -127,20 +128,19 @@ export class CartDetailComponent implements OnInit {
         this.cartService.deleteItem(customerId, this.lstResult[ind].id)
           .subscribe(
             (res: any) => {
-              this.toastr.success("Xóa thành công!");
+              this.toastr.success('Xóa thành công!');
             },
-            err => this.toastr.error("Có lỗi khi xóa sản phẩm"),
+            err => this.toastr.error('Có lỗi khi xóa sản phẩm'),
             () => { this.getList(); }
           );
       }
-    })
+    });
   }
 
   order() {
-    if(this.lstResult && this.lstResult.length == 0) {
+    if (this.lstResult && this.lstResult.length === 0) {
       return;
-    }
-    else {
+    } else {
       this.router.navigate(['/order']);
     }
   }

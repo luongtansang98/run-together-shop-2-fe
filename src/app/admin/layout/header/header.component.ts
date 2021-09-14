@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
 import { UserModel } from 'src/app/user/user.model';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class DashboardComponent implements OnInit {
-  private rxSubject: Subject<void>;
+export class HeaderComponent implements OnInit {
+
   public currentUser: UserModel;
   constructor(private router: Router, private userService: UserService) {
     this.currentUser = this.userService.getAuthUser();
   }
-  ngOnInit(): void {
-   // throw new Error("Method not implemented.");
+
+  ngOnInit() {
   }
 
   public onLogout(): void {
     this.userService.clearAuthData();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/admin/login');
   }
-
 }

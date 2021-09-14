@@ -13,5 +13,4 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit() {
     this.orderId = Number(this.route.snapshot.paramMap.get('orderId'));
   }
-
 }

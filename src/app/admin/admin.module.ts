@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminRoutingModule } from './admin-routing.module';
-import { ProductManagementModule } from './product-management/product-management.module';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { BlankPageComponent } from './blank-page/blank-page.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, SidebarComponent, BlankPageComponent, HeaderComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule,
-    ProductManagementModule
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }

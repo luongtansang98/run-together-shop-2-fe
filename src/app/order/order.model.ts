@@ -8,4 +8,5 @@ export class OrderModel {
   dliveryType: string;
   paymentType: string;
   orderDate: any;
+  note: string;
 }

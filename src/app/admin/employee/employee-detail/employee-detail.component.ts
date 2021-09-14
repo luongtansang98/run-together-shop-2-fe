@@ -16,22 +16,23 @@ declare var $: any;
 export class EmployeeDetailComponent implements OnInit {
   // public detailForm: FormGroup;
   @Input() positions = new Position();
-  imageUrl: string = "/assets/img/de.png";
+  imageUrl = '/assets/img/de.png';
   FileToUpload: File = null;
   public progress: number;
   public message: string;
+  // tslint:disable-next-line:no-output-on-prefix
   @Output() public onUploadFinished = new EventEmitter();
   @Output() public updateGrid = new EventEmitter();
   public isCreate: boolean;
   public name: string;
   public address: string;
-  public positionId: number=0;
+  public positionId = 0;
   public phoneNumber: string;
   public user: UserToCreate;
   public users: User[] = [];
   public response: any;
   formDetail = new FormGroup({
-    id:new FormControl(),
+    id: new FormControl(),
     name: new FormControl(''),
     address: new FormControl(''),
     phoneNumber: new FormControl(''),
@@ -39,16 +40,15 @@ export class EmployeeDetailComponent implements OnInit {
     imgPath: new FormControl(''),
   });
   constructor(private toastr: ToastrService,
-    private empService :EmployeeService,
-    private productService: ProductManagementService
+              private empService: EmployeeService,
+              private productService: ProductManagementService
     ) { }
 
   ngOnInit() {
   }
 
-  showModal(id?:any) {
-    if(id && id > 0)
-    {
+  showModal(id?: any) {
+    if (id && id > 0) {
       this.empService.getById(id).subscribe(
         res => {
           this.formDetail.patchValue(res);
@@ -56,9 +56,9 @@ export class EmployeeDetailComponent implements OnInit {
         null,
         () => $('#detailModal').modal('show')
       );
-    }
-    else
+    } else {
       $('#detailModal').modal('show');
+    }
   }
   public uploadFile = (files) => {
     if (files.length === 0) {
@@ -67,36 +67,36 @@ export class EmployeeDetailComponent implements OnInit {
     //#region Show image preview
     this.FileToUpload = files.item(0);
 
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-    }
+    };
     reader.readAsDataURL(this.FileToUpload);
     //#endregion
 
     this.productService.uploadIamge(files)
       .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress)
+        if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
-        else if (event.type === HttpEventType.Response) {
+        } else if (event.type === HttpEventType.Response) {
           this.message = 'Tải hình thành công.';
           this.response = event.body;
         }
       });
   }
   public onCreate = () => {
-    if (!this.response || this.response.dbPath == undefined) {
-      alert("Bạn chưa chọn hình");
+    if (!this.response || this.response.dbPath === undefined) {
+      alert('Bạn chưa chọn hình');
       return;
     }
 
-    if(this.formDetail.invalid) return;
+    if (this.formDetail.invalid) { return; }
     this.formDetail.controls.imgPath.setValue(this.response.dbPath);
-    var user = {
+    const user = {
   name: this.formDetail.value.name,
   address: this.formDetail.value.address,
-  positionId:Number(this.formDetail.value.positionId),
-  phoneNumber:this.formDetail.value.phoneNumber,
+  positionId: Number(this.formDetail.value.positionId),
+  phoneNumber: this.formDetail.value.phoneNumber,
   imgPath: this.formDetail.value.imgPath
     } as User;
 
@@ -104,21 +104,20 @@ export class EmployeeDetailComponent implements OnInit {
     this.empService.createEmployee(user)
       .subscribe(
         res => {
-          this.toastr.success("Tạo mới thành công");
+          this.toastr.success('Tạo mới thành công');
         },
-        error =>
-        {
-          this.toastr.error("Tạo mới thất bại"),
+        error => {
+          this.toastr.error('Tạo mới thất bại'),
           this.formDetail.reset();
         },
         () => {
           this.updateGrid.emit(),
           $('#detailModal').modal('hide'),
-          this.formDetail.reset()
+          this.formDetail.reset();
         }
       );
   }
-  haha(){
-    alert("hello");
+  haha() {
+    alert('hello');
   }
 }

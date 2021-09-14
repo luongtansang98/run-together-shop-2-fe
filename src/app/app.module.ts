@@ -16,11 +16,12 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { MatAutocompleteModule, MatButtonModule, MatInputModule, MatStepperModule } from '@angular/material';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, // alternatively NoopAnimationsModule
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
@@ -40,18 +42,17 @@ import { LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    BrowserAnimationsModule, // alternatively NoopAnimationsModule
     ToastrModule.forRoot({
       progressBar: true
     }), // ToastrModule added
-    BrowserAnimationsModule,
 
     MatStepperModule,
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
     LoadingBarModule,
-    LoadingBarHttpClientModule
+    LoadingBarHttpClientModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [UserService,
     {

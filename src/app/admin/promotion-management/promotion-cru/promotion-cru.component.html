@@ -1,7 +1,7 @@
-<h4>Chi tiết</h4>
+<h4>Tạo mới</h4>
 <div class="br-section-wrapper">
   <div class="col-md-12 mg-t-20 mg-xl-t-0">
-    <form [formGroup]="formDetail" (ngSubmit)="save()" autocomplete="off" *ngIf="formDetail">
+    <form [formGroup]="formDetail" autocomplete="off" *ngIf="formDetail">
       <div class="form-layout form-layout-5">
         <div class="row">
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Mã khuyến mãi:</label>
@@ -37,7 +37,13 @@
         <div class="row mg-t-20">
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Trị giá:</label>
           <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-            <input type="text" class="form-control" placeholder="Nhập giá trị" formControlName="value">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Nhập giá trị" formControlName="value">
+              <div class="input-group-append">
+                <span class="input-group-text">{{ promotionTypeIdCtrl.value == 1 ? '%' : 'vnd' }}</span>
+              </div>
+            </div>
+            <!-- <input type="text" class="form-control" placeholder="Nhập giá trị" formControlName="value"> -->
           </div>
         </div><!-- row -->
         <div class="row mg-t-20">
@@ -64,15 +70,15 @@
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span>Áp dụng cho toàn bộ sản
             phẩm:</label>
           <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="canApplyForAllCtrl.value == true ? 'on' : 'off'" (click)="canApplyForAllCtrl.value = !canApplyForAllCtrl.value">
-              <div class="br-toggle-switch" (click)=test($event)></div>
+            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="canApplyForAllCtrl.value == true ? 'on' : 'off'" (click)="onSwitchControl('canApplyForAll', canApplyForAllCtrl.value)">
+              <div class="br-toggle-switch"></div>
             </div>
           </div>
         </div><!-- row -->
         <div class="row mg-t-20">
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Vô hiệu:</label>
           <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="isDisableCtrl.value == true ? 'on' : 'off'" (click)="isDisableCtrl.value = !isDisableCtrl.value">
+            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="isDisableCtrl.value == true ? 'on' : 'off'" (click)="onSwitchControl('isDisable', isDisableCtrl.value)">
               <div class="br-toggle-switch"></div>
             </div>
           </div>
@@ -81,9 +87,8 @@
         <div class="row mg-t-30">
           <div class="col-sm-8 mg-l-auto">
             <div class="form-layout-footer">
-              <button class="btn btn-secondary" (click)="back()">Quay về</button>
-              <button class="btn btn-purple" (click)="deletePromotion()">Xóa</button>
-              <button class="btn btn-primary" [routerLink]="'edit'">Chỉnh sửa</button>
+              <button class="btn btn-secondary" routerLink="/admin/dashboard/promotion">Quay về</button>
+              <button (click)="save()" class="btn btn-info">Hoàn tất</button>
             </div><!-- form-layout-footer -->
           </div><!-- col-8 -->
         </div>

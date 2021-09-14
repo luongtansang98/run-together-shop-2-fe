@@ -40,12 +40,12 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
   isEditAddress = false;
 
   constructor(private _formBuilder: FormBuilder,
-    private cusService: CustomerService,
-    private cartService: CartService,
-    private customerService: CustomerService,
-    private orderService: OrderService,
-    private toastr: ToastrService,
-    private router: Router
+              private cusService: CustomerService,
+              private cartService: CartService,
+              private customerService: CustomerService,
+              private orderService: OrderService,
+              private toastr: ToastrService,
+              private router: Router
   ) {}
   ngAfterViewInit(): void {
 
@@ -82,16 +82,15 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
   }
 
   isLogin() {
-    var customerId = Number(this.customerService.getAuthCustomer().customerId);
-    if (customerId == 0 || customerId == null) {
+    const customerId = Number(this.customerService.getAuthCustomer().customerId);
+    if (customerId === 0 || customerId == null) {
       return false;
-    }
-    else return true;
+    } else { return true; }
   }
 
   getBuy() {
-    var customerId = Number(this.customerService.getAuthCustomer().customerId);
-    if (customerId == 0 || customerId == null) {
+    const customerId = Number(this.customerService.getAuthCustomer().customerId);
+    if (customerId === 0 || customerId == null) {
       return;
     }
     else {
@@ -99,15 +98,15 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
       req.orderDate = new Date();
       this.orderService.CompleteOrder(req).subscribe({
         complete: () => { }, // completeHandler
-        error: () => { this.toastr.error("Vui lòng thử lại sau ít phút.") },    // errorHandler
-        next: () => { this.toastr.success("Đặt mua thành công!").onHidden.subscribe(res => this.router.navigate(['/'])); }     // nextHandler
+        error: () => { this.toastr.error('Vui lòng thử lại sau ít phút.'); },    // errorHandler
+        next: () => { this.toastr.success('Đặt mua thành công!').onHidden.subscribe(res => this.router.navigate(['/'])); }     // nextHandler
       });
     }
   }
 
   getList(event?: any) {
-    var customerId = Number(this.customerService.getAuthCustomer().customerId);
-    if (customerId == 0 || customerId == null) {
+    const customerId = Number(this.customerService.getAuthCustomer().customerId);
+    if (customerId === 0 || customerId == null) {
       return;
     }
 

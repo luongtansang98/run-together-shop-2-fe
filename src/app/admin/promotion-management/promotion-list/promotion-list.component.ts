@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PagingModel } from 'src/app/utilities/paging-model.model';
 import { ProductDTO } from '../../product-management/product-management.model';
-import { ProductManagementService } from '../../product-management/product-management.service';
+import { PromotionDTO } from '../promotion-management.model';
+import { PromotionManagementService } from '../promotion-management.service';
 
 @Component({
   selector: 'app-promotion-list',
@@ -11,31 +12,33 @@ import { ProductManagementService } from '../../product-management/product-manag
 })
 export class PromotionListComponent implements OnInit {
   searchModel = {
-    CodeOrNameProduct: '',
-    GroupProductId: '',
-    CategoryId: '',
+    CodeOrName: '',
+    PromotionTypeId: null ,
+    IsDisable: null,
+    CanApplyForAll: null,
+    StartTime: null,
+    EndTime: null,
     page: 1
   };
-  isLoad: boolean = false;
+  isLoad = false;
   pagingResult: PagingModel = new PagingModel();
   pageCount: number;
-  products: ProductDTO[] = [];
-  constructor(private productService: ProductManagementService, private router: Router) { }
+  promotions: PromotionDTO[] = [];
+  constructor(private promotionService: PromotionManagementService, private router: Router) { }
 
   ngOnInit() {
     this.getList();
   }
   getList(event?: any) {
-    if (!event) this.searchModel.page = 1;
-    else this.searchModel.page = event;
+    if (!event) { this.searchModel.page = 1; } else { this.searchModel.page = event; }
     this.isLoad = true;
     window.scroll(0, 0);
     setTimeout(() => {
-      this.productService.getList(this.searchModel)
+      this.promotionService.getList(this.searchModel)
         .subscribe(
           (res: any) => {
             this.pagingResult = res;
-            this.products = res.results as ProductDTO[] || [];
+            this.promotions = res.results as PromotionDTO[] || [];
             this.pageCount = res.pageCount as number;
           },
           null,
@@ -44,30 +47,10 @@ export class PromotionListComponent implements OnInit {
     }, 1000);
   }
 
-  getDescription(id: any, type: any) {
-    if (type == 1) {
-      if (id == 1)
-        return "Nam";
-      else if (id == 2)
-        return "Nữ";
-      else return "Trẻ em";
-    }
-    else if (type == 2) {
-      if (id == 1)
-        return "Cam";
-      else if (id == 2)
-        return "Đỏ";
-      else return "Trắng";
-    }
-    else if (type == 3) {
-      if (id == 1)
-        return "Thể thao";
-      else if (id == 2)
-        return "Gym";
-      else return "Chạy bộ";
-    }
+  goToDetail(promotionId) {
+    this.router.navigate([`${promotionId}`]);
   }
-  goToDetail(orderId) {
-    this.router.navigate([`/order-list/${orderId}`]);
+  createPromotion() {
+    this.router.navigateByUrl('create');
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PromotionCruComponent } from './promotion-cru/promotion-cru.component';
 import { PromotionDetailComponent } from './promotion-detail/promotion-detail.component';
-import { PromotionEditComponent } from './promotion-edit/promotion-edit.component';
 import { PromotionListComponent } from './promotion-list/promotion-list.component';
 
 
@@ -11,13 +11,16 @@ const routes: Routes = [
     component: PromotionListComponent
   },
   {
-    path: ':promotionId',
-    component: PromotionDetailComponent,
-
+    path: 'create',
+    component: PromotionCruComponent,
   },
   {
     path: ':promotionId/edit',
-    component: PromotionEditComponent,
+    component: PromotionCruComponent,
+  },
+  {
+    path: ':promotionId',
+    component: PromotionDetailComponent,
   }
 ];
 
