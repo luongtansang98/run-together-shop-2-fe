@@ -1,8 +1,30 @@
-.modal-lg
-{
+.modal-lg {
   width: 800px;
 }
 .aParent div {
   float: left;
   clear: none;
+}
+
+.margin-clear {
+  clear: both;
+  min-height: 1px;
+  margin-bottom: 50px;
+}
+
+ul {
+  overflow: hidden;
+  list-style-type: none;
+}
+li {
+  float: left;
+  width: 320px;
+  padding: 8px;
+
+  border: 1px solid #d8d0d0;
+  border-radius: 10px;
+  margin: 5px;
+}
+li:nth-child(2n + 1) {
+  clear: left;
 }
