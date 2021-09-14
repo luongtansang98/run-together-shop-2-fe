@@ -182,7 +182,7 @@
           <div *ngIf="products[3*i]" style="align-self: flex-end;" class="col-md-6 col-lg-4 hoo">
             <div class="card card-block bd-0 shadow-base pd-20">
               <a [routerLink]="products[3*i].id" href="javascript:void(0)" style="text-align: center;">
-                <img style="width: 225px;" [src]="createImgPath(products[3*i].firseImagePath)" class="img-fluid" alt="">
+                <img style="width: 225px;" [src]="createImgPath(products[3*i].firstImagePath)" class="img-fluid" alt="">
               </a>
               <div class="d-flex justify-content-between align-items-center mg-t-20">
                 <div>
@@ -191,7 +191,11 @@
                   <span class="tx-13">{{products[3*i].description}}</span>
                 </div>
                 <div class="tx-right">
-                  <span class="tx-15">{{products[3*i].priceExport | currency:"VND":true}}</span>
+                  <span *ngIf="!products[3*i].priceWithDiscount" class="tx-15">{{products[3*i].priceExport | currency:"VND":true}}</span>
+
+                  <h6 *ngIf="products[3*i].priceWithDiscount" class="tx-14 tx-normal mg-b-2 line-through">{{products[3*i].priceExport | currency:"VND":true}}</h6>
+                  <span *ngIf="products[3*i].priceWithDiscount" class="tx-13">{{products[3*i].priceWithDiscount | currency:"VND":true}}</span>
+
                 </div>
               </div><!-- d-flex -->
             </div><!-- card -->
@@ -199,7 +203,7 @@
           <div *ngIf="products[3*i+1]" style="align-self: flex-end;" class="col-md-6 col-lg-4 mg-t-20 mg-md-t-0 hoo">
             <div class="card card-block bd-0 shadow-base pd-20">
               <a [routerLink]="products[3*i+1].id" style="text-align: center;" href="javascript:void(0)"><img
-                  style="width: 225px;" [src]="createImgPath(products[3*i+1].firseImagePath)" class="img-fluid"
+                  style="width: 225px;" [src]="createImgPath(products[3*i+1].firstImagePath)" class="img-fluid"
                   alt=""></a>
               <div class="d-flex justify-content-between align-items-start mg-t-20">
                 <div>
@@ -208,7 +212,11 @@
                   <span class="tx-13">{{products[3*i+1].description}}</span>
                 </div>
                 <div class="tx-right">
-                  <span class="tx-15">{{products[3*i+1].priceExport | currency:"VND":true}}</span>
+                  <span *ngIf="!products[3*i+1].priceWithDiscount" class="tx-15">{{products[3*i+1].priceExport | currency:"VND":true}}</span>
+
+                  <h6 *ngIf="products[3*i+1].priceWithDiscount" class="tx-14 tx-normal mg-b-2 line-through">{{products[3*i+1].priceExport | currency:"VND":true}}</h6>
+                  <span *ngIf="products[3*i+1].priceWithDiscount" class="tx-13">{{products[3*i+1].priceWithDiscount | currency:"VND":true}}</span>
+                  <!-- <span class="tx-15">{{products[3*i+1].priceExport | currency:"VND":true}}</span> -->
                 </div>
               </div><!-- d-flex -->
             </div><!-- card -->
@@ -216,7 +224,7 @@
           <div *ngIf="products[3*i+2]" style="align-self: flex-end;" class="col-md-6 col-lg-4 mg-t-20 mg-lg-t-0 hoo">
             <div class="card card-block bd-0 shadow-base pd-20">
               <a [routerLink]="products[3*i+2].id" style="text-align: center;" href="javascript:void(0)"><img
-                  style="width: 225px;" [src]="createImgPath(products[3*i+2].firseImagePath)" class="img-fluid"
+                  style="width: 225px;" [src]="createImgPath(products[3*i+2].firstImagePath)" class="img-fluid"
                   alt=""></a>
               <div class="d-flex justify-content-between align-items-center mg-t-20">
                 <div>
@@ -225,7 +233,11 @@
                   <span class="tx-13">{{products[3*i+2].description}}</span>
                 </div>
                 <div class="tx-right">
-                  <span class="tx-15">{{products[3*i+2].priceExport | currency:"VND":true}}</span>
+                  <span *ngIf="!products[3*i+2].priceWithDiscount" class="tx-15">{{products[3*i+2].priceExport | currency:"VND":true}}</span>
+
+                  <h6 *ngIf="products[3*i+2].priceWithDiscount" class="tx-14 tx-normal mg-b-2 line-through">{{products[3*i+2].priceExport | currency:"VND":true}}</h6>
+                  <span *ngIf="products[3*i+2].priceWithDiscount" class="tx-13">{{products[3*i+2].priceWithDiscount | currency:"VND":true}}</span>
+                  <!-- <span class="tx-15">{{products[3*i+2].priceExport | currency:"VND":true}}</span> -->
                 </div>
               </div><!-- d-flex -->
             </div><!-- card -->

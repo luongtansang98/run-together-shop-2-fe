@@ -150,3 +150,7 @@ ngx-gallery  /deep/ .ngx-gallery-arrow-wrapper {
   flex-direction: row;
   align-items: center;
 }
+.line-through {
+  -webkit-text-decoration-line: line-through; /* Safari */
+   text-decoration-line: line-through;
+}

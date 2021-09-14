@@ -105,3 +105,8 @@
   height: 225px !important;
   object-fit: contain !important;
 }
+
+.line-through {
+  -webkit-text-decoration-line: line-through; /* Safari */
+   text-decoration-line: line-through;
+}
