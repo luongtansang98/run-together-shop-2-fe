@@ -14,7 +14,7 @@ export class ProductDTO {
   countImage: number;
   imagesList  = new Array<ImageProductDTO>();
   sizes  = new Array<ProductSizeDTO>();
-  firseImagePath: string;
+  firstImagePath: string;
   promotionList: any[] = [];
 
   promotionId: number;

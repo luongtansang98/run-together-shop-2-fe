@@ -1,7 +1,7 @@
 <h4>Chi tiết</h4>
 <div class="br-section-wrapper">
   <div class="col-md-12 mg-t-20 mg-xl-t-0">
-    <form [formGroup]="formDetail" (ngSubmit)="save()" autocomplete="off" *ngIf="formDetail">
+    <form [formGroup]="formDetail" autocomplete="off" *ngIf="formDetail">
       <div class="form-layout form-layout-5">
         <div class="row">
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Mã khuyến mãi:</label>
@@ -64,15 +64,15 @@
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span>Áp dụng cho toàn bộ sản
             phẩm:</label>
           <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="canApplyForAllCtrl.value == true ? 'on' : 'off'" (click)="canApplyForAllCtrl.value = !canApplyForAllCtrl.value">
-              <div class="br-toggle-switch" (click)=test($event)></div>
+            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="canApplyForAllCtrl.value == true ? 'on' : 'off'" (click)="changeCanApplyForAllCtrl()">
+              <div class="br-toggle-switch"></div>
             </div>
           </div>
         </div><!-- row -->
         <div class="row mg-t-20">
           <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Vô hiệu:</label>
           <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="isDisableCtrl.value == true ? 'on' : 'off'" (click)="isDisableCtrl.value = !isDisableCtrl.value">
+            <div class="br-toggle br-toggle-rounded br-toggle-primary" [ngClass]="isDisableCtrl.value == true ? 'on' : 'off'" (click)="changeIsDisableCtrl()">
               <div class="br-toggle-switch"></div>
             </div>
           </div>

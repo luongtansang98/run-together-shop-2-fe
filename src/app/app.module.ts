@@ -33,7 +33,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     PageNotFoundComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule, // alternatively NoopAnimationsModule
     ModalModule.forRoot(),
     FormsModule,

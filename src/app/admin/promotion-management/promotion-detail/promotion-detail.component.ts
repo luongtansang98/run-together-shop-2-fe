@@ -62,6 +62,15 @@ export class PromotionDetailComponent implements OnInit {
     return this.formDetail.get('isDisable');
   }
 
+  changeCanApplyForAllCtrl() {
+    // tslint:disable-next-line:no-string-literal
+    this.formDetail.controls['canApplyForAll'].setValue(!this.canApplyForAllCtrl.value);
+  }
+  changeIsDisableCtrl() {
+    // tslint:disable-next-line:no-string-literal
+    this.formDetail.controls['isDisable'].setValue(!this.isDisableCtrl.value);
+  }
+
   getPromotionId(promotionId) {
     this.promotionService.getById(promotionId).subscribe(
       (res: any) => {
