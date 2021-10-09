@@ -19,6 +19,9 @@ export class ProductListComponent implements OnInit {
   pagingResult: PagingModel = new PagingModel();
   pageCount: number;
   products: ProductDTO[] = [];
+  testReset4: any;
+  testReset5: any;
+  testReset6: any;
   constructor(private productService: ProductManagementService) { }
 
   ngOnInit() {
