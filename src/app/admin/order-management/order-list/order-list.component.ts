@@ -24,6 +24,7 @@ export class OrderListComponent implements OnInit {
   pagingResult: PagingModel = new PagingModel();
   pageCount: number;
   orders: OrderDTO[] = [];
+<<<<<<< HEAD
   testReset1: any;
   testReset2: any;
   testReset3: any;
@@ -31,6 +32,8 @@ export class OrderListComponent implements OnInit {
   testReset7: any;
   testReset8: any;
   testReset9: any;
+=======
+>>>>>>> parent of 63aa367 (test reset 1)
   constructor(private orderService: OrderManagementService, private router: Router) { }
 
   ngOnInit() {
