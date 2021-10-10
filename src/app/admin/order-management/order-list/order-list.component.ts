@@ -24,8 +24,6 @@ export class OrderListComponent implements OnInit {
   pagingResult: PagingModel = new PagingModel();
   pageCount: number;
   orders: OrderDTO[] = [];
-
-
   testReset7: any;
   testReset8: any;
   testReset9: any;
