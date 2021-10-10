@@ -29,9 +29,6 @@ export class OrderListComponent implements OnInit {
   testReset7: any;
   testReset8: any;
   testReset9: any;
-  testReset1: any;
-  testReset2: any;
-  testReset3: any;
   constructor(private orderService: OrderManagementService, private router: Router) { }
 
   ngOnInit() {
