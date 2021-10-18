@@ -82,6 +82,10 @@
 
         </div>
         <div class="order-info">
+          <p><strong>Ghi chú</strong></p>
+          <input class="form-control" type="text" [(ngModel)]="orderNote" [ngModelOptions]="{standalone: true}" placeholder="Cần gì thì cứ nhắn shop nhé!"/>
+        </div>
+        <div class="order-info">
           <p><strong>Đơn hàng</strong></p>
           <div>
             <span>{{(lstResult && lstResult.length > 0 ? lstResult.length : '0') + ' sản phẩm'}} </span>

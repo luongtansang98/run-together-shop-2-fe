@@ -38,6 +38,7 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
   isToggle = false;
   customerInfo: CustomerModel;
   isEditAddress = false;
+  orderNote = '';
 
   constructor(private _formBuilder: FormBuilder,
               private cusService: CustomerService,
@@ -92,9 +93,9 @@ export class OrderStepComponent implements OnInit, AfterViewInit {
     const customerId = Number(this.customerService.getAuthCustomer().customerId);
     if (customerId === 0 || customerId == null) {
       return;
-    }
-    else {
-      let req = this.thirdFormGroup.value as OrderModel;
+    } else {
+      const req = this.thirdFormGroup.value as OrderModel;
+      req.note = this.orderNote.trim();
       req.orderDate = new Date();
       this.orderService.CompleteOrder(req).subscribe({
         complete: () => { }, // completeHandler
