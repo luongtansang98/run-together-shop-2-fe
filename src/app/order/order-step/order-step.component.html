@@ -48,14 +48,42 @@
 
         <p><strong>2. Chọn hình thức thanh toán</strong></p>
         <div class="payment-form">
-          <label class="rdiobox">
-            <input name="paymentType" type="radio" value="0" formControlName="paymentType">
-            <span>Thanh toán bằng tiền mặt khi nhận hàng</span>
+          <label class="rdiobox" for="cash">
+            <input name="paymentType" type="radio" value="0" formControlName="paymentType" id="cash">
+            <span>
+              <img class="payment-icon" src="./assets/img/payment/cash-2650121-2196619.png"/>
+              Thanh toán bằng tiền mặt khi nhận hàng
+            </span>
           </label>
-          <label class="rdiobox">
-            <input name="paymentType" type="radio" value="1" formControlName="paymentType">
-            <span>Thanh toán bằng thẻ ATM</span>
+          <label class="rdiobox" for="atm">
+            <input name="paymentType" type="radio" value="1" formControlName="paymentType" id="atm">
+            <span>
+              <img class="payment-icon" src="./assets/img/payment/atm-cards-589380.png"/>
+              Thanh toán bằng thẻ ATM
+            </span>
           </label>
+          <label class="rdiobox" >
+            <input name="paymentType" type="radio" value="2" formControlName="paymentType" id="momo">
+            <span>
+              <img class="payment-icon" src="./assets/img/payment/icon-momo.png"/>
+              Thanh toán bằng momo
+            </span>
+          </label>
+
+
+
+          <!-- <label class="container">Thanh toán bằng tiền mặt khi nhận hàng
+            <input type="radio" checked="checked" name="radio" formControlName="paymentType">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Thanh toán bằng thẻ ATM
+            <input type="radio" name="radio" formControlName="paymentType">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Thanh toán bằng momo
+            <input type="radio" name="radio" formControlName="paymentType">
+            <span class="checkmark"></span>
+          </label> -->
         </div>
 
         <button class="btn-buy" (click)="getBuy()">Đặt mua</button>
